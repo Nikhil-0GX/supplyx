@@ -1,0 +1,25 @@
+type ProductStage = record {
+    stage_id: text;
+    timestamp: nat64;
+    location: text;
+    description: text;
+    certifications: vec text;
+    handler: text;
+};
+
+type Product = record {
+    product_id: text;
+    name: text;
+    description: text;
+    stages: vec ProductStage;
+    qr_code: text;
+    created_at: nat64;
+    updated_at: nat64;
+};
+
+service : {
+    "add_product": (text, text) -> (text);
+    "add_stage": (text, text, text, vec text, text) -> (bool);
+    "get_product": (text) -> (opt Product) query;
+    "get_product_history": (text) -> (vec ProductStage) query;
+} 
