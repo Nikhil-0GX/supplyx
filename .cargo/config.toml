@@ -1,5 +1,0 @@
-[target.wasm32-unknown-unknown]
-rustflags = ["-C", "link-arg=--export-table"]
-
-[build]
-target = "wasm32-unknown-unknown" 
