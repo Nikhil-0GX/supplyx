@@ -1,32 +1,67 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './contexts/ThemeContext';
-import Navbar from './components/Navbar';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import ProductDetails from './pages/ProductDetails';
-import ScanProduct from './pages/ScanProduct';
-import About from './pages/About';
+import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ToastContainer } from 'react-toastify';
+import { ErrorBoundary } from 'react-error-boundary';
+import { HelmetProvider } from 'react-helmet-async';
+import { ParticlesProvider } from 'react-tsparticles';
+
+import AppRoutes from './routes';
+import theme from './theme';
+import './styles/global.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+      staleTime: 5 * 60 * 1000,
+    },
+  },
+});
+
+function ErrorFallback({ error, resetErrorBoundary }) {
   return (
-    <ThemeProvider>
-      <Router>
-        <Layout>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/scan" element={<ScanProduct />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </Layout>
-      </Router>
-      <ToastContainer position="bottom-right" />
-    </ThemeProvider>
+    <div role="alert" className="error-boundary">
+      <h2>Something went wrong:</h2>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
   );
 }
 
-export default App; 
+function App() {
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <HelmetProvider>
+            <ParticlesProvider>
+              <CssBaseline />
+              <BrowserRouter>
+                <AppRoutes /> {/* 👈 All your lazy, animated routes handled here */}
+              </BrowserRouter>
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
+            </ParticlesProvider>
+          </HelmetProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
+  );
+}
+
+export default App;

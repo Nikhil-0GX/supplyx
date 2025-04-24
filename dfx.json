@@ -1,4 +1,5 @@
 {
+  "version": 1,
   "canisters": {
     "backend": {
       "type": "rust",
@@ -8,22 +9,20 @@
     "frontend": {
       "type": "assets",
       "source": ["src/frontend/dist"],
-      "frontend": {
-        "entrypoint": "src/frontend/src/App.jsx"
-      }
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
+      "build": ["cd src/frontend && npm run build"]
+    },
+    "relay_canister": {
+      "type": "motoko",
+      "main": "src/relay_canister/lib.mo"
     }
   },
   "networks": {
     "local": {
       "bind": "127.0.0.1:8000",
       "type": "ephemeral"
+    },
+    "ic": {
+      "type": "persistent"
     }
-  },
-  "version": 1
-} 
+  }
+}
