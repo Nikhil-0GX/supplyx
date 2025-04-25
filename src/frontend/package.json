@@ -1,70 +1,36 @@
 {
-  "name": "backend",
+  "name": "vite-react-typescript-starter",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
-    "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\"",
-    "prebuild": "dfx generate",
-    "start": "vite --port 3000",
-    "test": "vitest run"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.10",
-    "@mui/material": "^5.15.10",
-    "@mui/x-data-grid": "^6.19.4",
-    "@popperjs/core": "^2.11.6",
-    "axios": "^1.8.4",
-    "chart.js": "^4.4.9",
-    "framer-motion": "^11.0.3",
-    "gsap": "^3.12.5",
-    "lottie-web": "^5.12.2",
-    "react": "^18.2.0",
-    "react-awesome-button": "^6.1.4",
-    "react-awesome-reveal": "^4.1.0",
-    "react-chartjs-2": "^5.3.0",
-    "react-dom": "^18.2.0",
-    "react-error-boundary": "^4.0.12",
-    "react-helmet-async": "^2.0.4",
-    "react-icons": "^5.0.1",
-    "react-intersection-observer": "^9.5.3",
-    "react-loading-skeleton": "^3.3.1",
-    "react-lottie": "^1.2.3",
-    "react-parallax-tilt": "^1.7.0",
-    "react-query": "^3.39.3",
-    "react-router-dom": "^6.30.0",
-    "react-scroll": "^1.9.0",
-    "react-slick": "^0.30.1",
+    "lucide-react": "^0.344.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.22.1",
     "react-toastify": "^10.0.4",
-    "react-tsparticles": "^2.12.0",
-    "slick-carousel": "^1.8.1",
-    "tsparticles": "^2.12.0"
+    "framer-motion": "^11.0.5"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.10",
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.17",
+    "@eslint/js": "^9.9.1",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^9.9.1",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "globals": "^15.9.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "tailwindcss-animate": "^1.0.7",
-    "vite": "^5.1.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.3.0",
+    "vite": "^5.4.2"
   }
 }

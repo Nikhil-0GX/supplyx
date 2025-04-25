@@ -10,10 +10,6 @@
       "type": "assets",
       "source": ["src/frontend/dist"],
       "build": ["cd src/frontend && npm run build"]
-    },
-    "relay_canister": {
-      "type": "motoko",
-      "main": "src/relay_canister/lib.mo"
     }
   },
   "networks": {
